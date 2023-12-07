@@ -1,0 +1,6 @@
+<div *ngIf="loading$ | async" class="spinner"></div>
+<ul *ngIf="comics$ | async as comics">
+    <li *ngFor="let comic of comics">
+        {{ comic.number + ' - ' + comic.title  }}
+    </li>
+</ul>
