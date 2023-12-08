@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 import { getComics, getComicsSuccess } from './comics.actions';
 import { Comics } from '../../../model/Comics';
 
@@ -29,9 +29,5 @@ export const comicsFeature = createFeature({
   ),
   extraSelectors: ({ selectComicsState }) => ({
     ...comicsAdapter.getSelectors(selectComicsState),
-    selectLoading: createSelector(
-      selectComicsState,
-      (comicsState) => comicsState.comicsLoading
-    ),
   }),
 });
