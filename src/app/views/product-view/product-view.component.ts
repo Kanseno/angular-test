@@ -1,7 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { comicsFeature } from './store/comics.reducer';
+import {comicsFeature, ComicsState} from './store/comics.reducer';
 import { getComics } from './store/comics.actions';
 
 @Component({
@@ -14,9 +14,9 @@ import { getComics } from './store/comics.actions';
 export class ProductViewComponent implements OnInit {
   
   readonly comics$ = this.store.select(comicsFeature.selectAll);
-  readonly loading$ = this.store.select(comicsFeature.selectLoading);
+  readonly loading$ = this.store.select(comicsFeature.selectComicsLoading);
   
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store<ComicsState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(getComics());
