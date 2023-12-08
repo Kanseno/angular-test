@@ -14,7 +14,7 @@ export class ComicsEffects {
   loadComics$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getComics),
-      mergeMap(() => this.comicsService.getComicsWithHeroNames$()),
+      mergeMap(() => this.comicsService.comicsWithHeroNames$),
       map((comics) => getComicsSuccess({ comics }))
     )
   );
